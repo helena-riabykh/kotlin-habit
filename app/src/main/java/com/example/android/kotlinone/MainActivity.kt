@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+ //   lkklkl
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
         super.onSaveInstanceState(savedInstanceState)
         savedInstanceState.putInt(STATE_NUMBER, x + 1);
