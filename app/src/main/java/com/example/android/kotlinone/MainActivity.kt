@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-   private val TAG = "MainActivity"
+    private val TAG = "MainActivity"
 
     var x = 0
 
@@ -52,13 +52,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClick(v: View?) {
-        val intent = Intent(this, Main2Activity::class.java).apply { putExtra("salut", x * x) }
+        val intent = Intent(this, Main2Activity::class.java).apply { putExtra(Main2Activity.STATE_INTENT, x * x) }
         startActivity(intent)
     }
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
         super.onSaveInstanceState(savedInstanceState)
-        savedInstanceState.putInt("number", x + 1);
+        savedInstanceState.putInt(STATE_NUMBER, x + 1);
     }
 }
 
