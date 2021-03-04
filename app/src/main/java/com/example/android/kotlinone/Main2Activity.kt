@@ -2,7 +2,7 @@ package com.example.android.kotlinone
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main2.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class Main2Activity : AppCompatActivity() {
 
@@ -13,7 +13,7 @@ class Main2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
-        if (intent != null) number.text = intent.getIntExtra(STATE_INTENT, 0).toString()
+        intent?.let { number.text = it.getIntExtra(STATE_INTENT, 0).toString() }
     }
 }
 
