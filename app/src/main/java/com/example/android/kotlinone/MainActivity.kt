@@ -4,23 +4,26 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-   private val TAG = "MainActivity"
+    private val TAG = "MainActivity"
 
     var x = 0
+
+    companion object {
+        const val STATE_NUMBER = "number"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate(Bundle) called")
         setContentView(R.layout.activity_main)
         if (savedInstanceState != null) {
-            x = savedInstanceState.getInt("number")
+            x = savedInstanceState.getInt(STATE_NUMBER)
         }
-        val text = findViewById<TextView>(R.id.number)
-        text.text = x.toString();
+        number.text = x.toString();
     }
 
     override fun onStart() {
@@ -49,13 +52,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClick(v: View?) {
-        val intent = Intent(this, Main2Activity::class.java).apply { putExtra("salut", x * x) }
+        val intent = Intent(this, Main2Activity::class.java).apply { putExtra(Main2Activity.STATE_INTENT, x * x) }
         startActivity(intent)
     }
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
         super.onSaveInstanceState(savedInstanceState)
-        savedInstanceState.putInt("number", x + 1);
+        savedInstanceState.putInt(STATE_NUMBER, x + 1);
     }
 }
 
